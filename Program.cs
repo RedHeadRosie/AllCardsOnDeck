@@ -62,11 +62,36 @@ namespace AllCardsOnDeck
             cards.Add("2 of Clubs");
             cards.Add("Ace of Clubs");
 
+
+
             //shuffle the cards using youtube method
+            var decreasingIndex = cards.Count - 1; //sets the var as the last element
+                                                   //creates a random number and then subtracts 1 as the index number goes from 0 to length-1
+
+
+            while (decreasingIndex >= 0)
+            {
+                Random r = new Random();
+                var randomIndex = r.Next(0, cards.Count);
+
+                var placeHolder1 = cards[decreasingIndex];
+                var placeHolder2 = cards[randomIndex];
+
+                cards[decreasingIndex] = placeHolder2;
+                cards[randomIndex] = placeHolder1;
+
+                //if we aren't at the first card, then look at the next one down the line and continue the shuffle
+                decreasingIndex = decreasingIndex - 1;
+
+
+            }
+
 
 
             //display top two cards
-
+            var firstTopCard = cards[0];
+            var secondTopCard = cards[1];
+            Console.WriteLine($"The top two cards are {firstTopCard} and {secondTopCard}");
 
         }
     }
